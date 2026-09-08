@@ -1,143 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projeto de monitoramento ambiental IoT do Grupo 03 do SESI SENAI Vinhedo." />
-  <title>EcoSense | Monitoramento IoT</title>
+  <title>Projeto IoT — Grupo 03 | Inicio</title>
+  <meta name="description" content="Dashboard IoT em tempo real via MQTT/WebSockets — Grupo 03" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="index.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" defer></script>
-  <script src="index.js" defer></script>
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/mqttws31.min.js"></script>
+</head>
 <body>
+
   <header class="site-header">
-    <a class="brand" href="#sobre" aria-label="EcoSense - página inicial"><span class="brand-mark"
-        aria-hidden="true">⌁</span><span>EcoSense</span></a>
-    <div class="team-identification"><strong>Monitoramento Ambiental IoT</strong><span>Grupo 03 · Turma IoT</span></div>
+    <div class="header-content">
+      <h1 class="project-title">
+        <span class="title-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9Z" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="11" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        Projeto IoT — Monitoramento Ambiental
+      </h1>
+      <p class="group-info">Grupo 03 bull; Turma: Automação e Sistemas — SESI SENAI Vinhedo</p>
+    </div>
+
     <nav class="main-nav" aria-label="Navegação principal">
-      <button class="nav-link active" type="button" data-page="sobre" aria-current="page">Sobre o projeto</button>
-      <button class="nav-link" type="button" data-page="dashboard">Dashboard ao vivo</button>
+      <a href="index.html" class="nav-btn active">Início</a>
+      <a href="projeto.html" class="nav-btn">Sobre o Projeto</a>
+      <a href="dashboard.html" class="nav-btn">Dashboard Ao Vivo</a>
     </nav>
   </header>
 
   <main>
-    <section id="sobre" class="page active" aria-labelledby="about-title">
-      <section class="hero" aria-label="Apresentação do projeto">
-        <div class="hero-copy">
-          <p class="eyebrow">Projeto IoT · SESI SENAI Vinhedo</p>
-          <h1 id="about-title">Dados do ambiente para decisões mais conscientes.</h1>
-          <p class="hero-text">O EcoSense acompanha temperatura, umidade e qualidade do ar em tempo real, tornando as
-            condições do espaço visíveis, compreensíveis e acionáveis.</p>
-          <button class="button-primary" type="button" data-go-dashboard>Ver dados ao vivo <span
-              aria-hidden="true">→</span></button>
+    <section class="tab-content active">
+      <h2 class="section-title">Bem-vindo ao Painel IoT</h2>
+      <article class="info-card">
+        <div class="info-card-text">
+          <h3>Sistema de Monitoramento Ambiental</h3>
+          <p>
+            Navegue pelos links do menu para explorar as especificações do **Projeto** ou acompanhar os dados em tempo real no **Dashboard**.
+          </p>
         </div>
-        <figure class="hero-image image-card">
-          <img src=""
-            alt="Placa eletrônica usada em protótipos de Internet das Coisas" />
-          <figcaption>Dados captados no ambiente, enviados a cada leitura.</figcaption>
-        </figure>
-      </section>
-
-      <section class="content-section" aria-labelledby="objective-title">
-        <div class="section-heading">
-          <p class="eyebrow">Nosso objetivo</p>
-          <h2 id="objective-title">Entender o ambiente para cuidar melhor dele.</h2>
-        </div>
-        <div class="article-grid">
-          <article class="info-card info-card-wide">
-            <img src=""
-              alt="Sensor conectado a uma placa de desenvolvimento" />
-            <div>
-              <h3>Monitoramento contínuo</h3>
-              <p>Sensores instalados no protótipo coletam informações do ar. Os dados são enviados ao dashboard para
-                acompanhar variações sem medições manuais.</p>
-            </div>
-          </article>
-          <article class="info-card accent-card"><span class="card-number">01</span>
-            <h3>Conforto</h3>
-            <p>Temperatura e umidade ajudam a avaliar o bem-estar do ambiente.</p>
-          </article>
-          <article class="info-card accent-card"><span class="card-number">02</span>
-            <h3>Prevenção</h3>
-            <p>A qualidade do ar alerta para condições que pedem atenção.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section architecture" aria-labelledby="architecture-title">
-        <div class="section-heading">
-          <p class="eyebrow">Hardware e arquitetura</p>
-          <h2 id="architecture-title">Do sensor à tela, em poucos instantes.</h2>
-        </div>
-        <div class="architecture-layout">
-          <figure class="architecture-image image-card"><img
-              src=""
-              alt="Componentes eletrônicos e circuito de um projeto de tecnologia" /></figure>
-          <ol class="flow-list">
-            <li><strong>Sensores</strong><span>Leem temperatura, umidade e gases do ar.</span></li>
-            <li><strong>ESP32</strong><span>Processa as leituras e se conecta à rede Wi-Fi.</span></li>
-            <li><strong>Mosquitto + MQTT</strong><span>Distribui mensagens pelo broker local.</span></li>
-            <li><strong>Dashboard web</strong><span>Recebe dados por WebSockets e atualiza os indicadores.</span></li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="password-section" aria-labelledby="password-title">
-        <div>
-          <p class="eyebrow">Acesso do grupo</p>
-          <h2 id="password-title">Senha do professor</h2>
-          <p>A senha fica salva somente neste navegador, usando o armazenamento local.</p>
-        </div>
-        <form id="password-form" class="password-form">
-          <label for="teacher-password">Senha fornecida pelo professor</label>
-          <div class="password-controls"><input id="teacher-password" name="teacher-password" type="password"
-              autocomplete="off" required /><button class="button-secondary" type="submit">Salvar</button></div>
-          <p id="password-feedback" class="form-feedback" aria-live="polite"></p>
-        </form>
-      </section>
-    </section>
-
-    <section id="dashboard" class="page dashboard-page" aria-labelledby="dashboard-title" hidden>
-      <div class="dashboard-header">
-        <div>
-          <p class="eyebrow">Leituras em tempo real</p>
-          <h1 id="dashboard-title">Painel ambiental</h1>
-          <p>Atualizações recebidas diretamente do protótipo IoT.</p>
-        </div>
-        <div id="status" class="connection-status disconnected" role="status" aria-live="polite"><span
-            class="status-dot" aria-hidden="true"></span><span id="status-text">Desconectado</span></div>
-      </div>
-      <section class="metrics" aria-label="Indicadores ambientais">
-        <article class="metric-card temperature-card"><span class="metric-icon" aria-hidden="true">♨</span>
-          <p>Temperatura</p><strong><span id="temp">--</span><small>°C</small></strong><span
-            class="metric-description">Condição térmica do ambiente</span>
-        </article>
-        <article class="metric-card humidity-card"><span class="metric-icon" aria-hidden="true">◒</span>
-          <p>Umidade</p><strong><span id="hum">--</span><small>%</small></strong><span
-            class="metric-description">Umidade relativa do ar</span>
-        </article>
-        <article class="metric-card air-card"><span class="metric-icon" aria-hidden="true">☁</span>
-          <p>Qualidade do ar</p><strong id="air">--</strong><span class="metric-description">Leitura do sensor de
-            gases</span>
-        </article>
-      </section>
-      <aside class="live-note"><span aria-hidden="true">◉</span>O painel é atualizado automaticamente quando novas
-        mensagens MQTT chegam.</aside>
-      <div class="project-banner">Projeto IOT SESI SENAI Vinhedo Grupo 03</div>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Projeto Integrador IoT · SESI SENAI Vinhedo</p>
-    <p><strong>Integrantes:</strong> Samuel Poltronieri, Pedro Henrique, Nathan Pereira, Otavio Ferreira, e tem o Eduardo ai (tlvz) · Integrantes do Grupo 03</p>
+    <h2 class="visually-hidden">Integrantes do Grupo</h2>
+    <p class="footer-title">Integrantes do Grupo 03</p>
+    <ul class="integrantes-list">
+      <li>Samuel Ktosian</li>
+      <li>Nathan Perreira</li>
+      <li>Otavio Ferreira</li>
+      <li>Pedro Almeida</li>
+      <li>Eduardo Lira</li>
+    </ul>
+    <p class="footer-copy">copy; 2026 — SESI SENAI Vinhedo. Todos os direitos reservados.</p>
   </footer>
-</body>
 
+  <script src="index.js"></script>
+</body>
 </html>

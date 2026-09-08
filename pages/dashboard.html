@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto IoT — Grupo 03 | Dashboard Ao Vivo</title>
+  <meta name="description" content="Dashboard IoT em tempo real via MQTT/WebSockets — Grupo 03" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/mqttws31.min.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-content">
+      <h1 class="project-title">
+        <span class="title-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C7 2 3 6 3 11c0 5 4.5 9 9 11 4.5-2 9-6 9-11 0-5-4-9-9-9Z" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="11" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        Projeto IoT — Monitoramento Ambiental
+      </h1>
+      <p class="group-info">Grupo 03 bull; Turma: Automação e Sistemas — SESI SENAI Vinhedo</p>
+    </div>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="index.html" class="nav-btn">Início</a>
+      <a href="projeto.html" class="nav-btn">Sobre o Projeto</a>
+      <a href="dashboard.html" class="nav-btn active">Dashboard Ao Vivo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dashboard" class="tab-content active" aria-labelledby="dashboard-titulo">
+      <h2 id="dashboard-titulo" class="section-title">Dashboard Ao Vivo</h2>
+
+      <div id="status" class="status disconnected" role="status" aria-live="polite">
+        Status: Desconectado
+      </div>
+
+      <div class="cards-container">
+        <div class="card card-temp">
+          <span class="card-icon" aria-hidden="true">🌡️</span>
+          <h3>Temperatura</h3>
+          <p class="card-value"><span id="temp">--</span> °C</p>
+        </div>
+
+        <div class="card card-hum">
+          <span class="card-icon" aria-hidden="true">💧</span>
+          <h3>Umidade</h3>
+          <p class="card-value"><span id="hum">--</span> %</p>
+        </div>
+
+        <div class="card card-air">
+          <span class="card-icon" aria-hidden="true">🍃</span>
+          <h3>Qualidade do Ar</h3>
+          <p class="card-value"><span id="air">--</span> ppm</p>
+        </div>
+      </div>
+
+      <div class="senha-config">
+        <h3>🔑 Senha da Equipe</h3>
+        <p class="senha-descricao">
+          Informe a senha fornecida pelo professor. Ela ficará salva neste navegador
+          (localStorage) para uso futuro.
+        </p>
+        <div class="senha-form">
+          <label for="senha-input" class="visually-hidden">Senha da equipe</label>
+          <input type="password" id="senha-input" placeholder="Digite a senha da equipe" />
+          <button id="btn-salvar-senha" type="button">Salvar</button>
+          <button id="btn-mostrar-senha" type="button">Mostrar</button>
+        </div>
+        <p id="senha-status" class="senha-status"></p>
+      </div>
+
+      <div class="banner-projeto">
+        Projeto IOT SESI SENAI Vinhedo Grupo 03
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h2 class="visually-hidden">Integrantes do Grupo</h2>
+    <p class="footer-title">Integrantes do Grupo 03</p>
+    <ul class="integrantes-list">
+      <li>Nome do Integrante 1</li>
+      <li>Nome do Integrante 2</li>
+      <li>Nome do Integrante 3</li>
+      <li>Nome do Integrante 4</li>
+    </ul>
+    <p class="footer-copy">copy; 2026 — SESI SENAI Vinhedo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
