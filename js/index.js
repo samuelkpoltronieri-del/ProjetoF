@@ -1,3 +1,6 @@
+const grupo = ["Nathan", "Pedro", "Samuel", "Otavio", "Eduardo"];
+
+localStorage.setItem("grupo: ", JSON.stringify(grupo));
 // =====================================================================
 // FUNÇÕES DE NAVEGAÇÃO (SPA) E SENHA — executadas primeiro
 // Como este <script> está no final do <body>, o DOM já está pronto
